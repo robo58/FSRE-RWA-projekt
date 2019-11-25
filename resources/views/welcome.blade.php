@@ -156,13 +156,7 @@
       </div>
     </div>
 
-    <!-- About Section Button -->
-    <div class="text-center mt-4">
-      <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/themes/freelancer/">
-        <i class="fas fa-download mr-2"></i>
-        Free Download!
-      </a>
-    </div>
+
 
   </div>
 </section>
@@ -257,12 +251,6 @@
         </a>
       </div>
 
-      <!-- Footer About Text -->
-      <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">About Freelancer</h4>
-        <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by
-          <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-      </div>
 
     </div>
   </div>
