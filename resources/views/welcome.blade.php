@@ -148,12 +148,15 @@
 
     <!-- About Section Content -->
     <div class="row">
-      <div class="col-lg-4 ml-auto">
-        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p>
+      <div class="col-lg-10 ml-auto masthead-subheading font-weight-light">
+        <p class="lead masthead-subheading font-weight-light ">Fsre Game Shop je projekt namijenjen online prodaji digitalnih igara.Na projektu sudjeluju:</p>
+        <ul>
+          <li>Robert Sliskovic</li>
+          <li>Branimir Raguz</li>
+          <li>Boze Skoko</li>
+        </ul>
       </div>
-      <div class="col-lg-4 mr-auto">
-        <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
-      </div>
+      
     </div>
 
 
@@ -229,9 +232,9 @@
 
       <!-- Footer Location -->
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Location</h4>
-        <p class="lead mb-0">2215 John Daniel Drive
-          <br>Clark, MO 65243</p>
+        <h4 class="text-uppercase mb-4"></h4>
+        <p class="lead mb-0">
+          <br></p>
       </div>
 
       <!-- Footer Social Icons -->
