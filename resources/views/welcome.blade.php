@@ -259,7 +259,7 @@
 <!-- Copyright Section -->
 <section class="copyright py-4 text-center text-white">
   <div class="container">
-    <small>Copyright &copy; Your Website 2019</small>
+    <small>Copyright &copy; FSRE Game Shop</small>
   </div>
 </section>
 
@@ -286,7 +286,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <!-- Portfolio Modal - Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Shooters</h2>
               <!-- Icon Divider -->
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -296,7 +296,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image -->
-              <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
+              <img class="img-fluid rounded mb-5" src="img/csgo.jpg" alt="">
               <!-- Portfolio Modal - Text -->
               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" href="#" data-dismiss="modal">
@@ -325,7 +325,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <!-- Portfolio Modal - Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">MMO/RPG</h2>
               <!-- Icon Divider -->
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -335,7 +335,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image -->
-              <img class="img-fluid rounded mb-5" src="img/portfolio/cake.png" alt="">
+              <img class="img-fluid rounded mb-5" src="img/witcher.jpg" alt="">
               <!-- Portfolio Modal - Text -->
               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" href="#" data-dismiss="modal">
@@ -364,7 +364,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <!-- Portfolio Modal - Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Racing</h2>
               <!-- Icon Divider -->
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -374,7 +374,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image -->
-              <img class="img-fluid rounded mb-5" src="img/portfolio/circus.png" alt="">
+              <img class="img-fluid rounded mb-5" src="img/cars.jpg" alt="">
               <!-- Portfolio Modal - Text -->
               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" href="#" data-dismiss="modal">
@@ -403,7 +403,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <!-- Portfolio Modal - Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">MOBA</h2>
               <!-- Icon Divider -->
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -413,7 +413,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image -->
-              <img class="img-fluid rounded mb-5" src="img/portfolio/game.png" alt="">
+              <img class="img-fluid rounded mb-5" src="img/dota.jpg" alt="">
               <!-- Portfolio Modal - Text -->
               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" href="#" data-dismiss="modal">
@@ -442,7 +442,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <!-- Portfolio Modal - Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Fighting</h2>
               <!-- Icon Divider -->
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -452,7 +452,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image -->
-              <img class="img-fluid rounded mb-5" src="img/portfolio/safe.png" alt="">
+              <img class="img-fluid rounded mb-5" src="img/fight.jpg" alt="">
               <!-- Portfolio Modal - Text -->
               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" href="#" data-dismiss="modal">
@@ -481,7 +481,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <!-- Portfolio Modal - Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
+              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Horror</h2>
               <!-- Icon Divider -->
               <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -491,7 +491,7 @@
                 <div class="divider-custom-line"></div>
               </div>
               <!-- Portfolio Modal - Image -->
-              <img class="img-fluid rounded mb-5" src="img/portfolio/submarine.png" alt="">
+              <img class="img-fluid rounded mb-5" src="img/dawn.jpg" alt="">
               <!-- Portfolio Modal - Text -->
               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
               <button class="btn btn-primary" href="#" data-dismiss="modal">
