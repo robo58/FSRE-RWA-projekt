@@ -19,6 +19,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/freelancer.min.css') }}" rel="stylesheet">
+    <style>
+        body{
+            background-image:url("img/halo5.jpg")!important;
+        }
+        .py-4{
+            padding-top: 8rem !important;
+        }
+    </style>
 </head>
 
 <body>
