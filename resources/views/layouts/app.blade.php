@@ -36,11 +36,12 @@
                 <a class="navbar-brand text-uppercase font-weight-bold text-white rounded" href="{{ url('/') }}">
                     Game Shop
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold text-white rounded" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    aria-label="{{ __('Toggle navigation') }}">Menu
+                    <i class="fas fa-bars"></i> 
                 </button>
+                
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -72,7 +73,11 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
+                                @can('manage-users')
+                                <a href="{{route('admin.users.index')}}" class="dropdown-item">
+                                    User Management
+                                </a>
+                                @endcan
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
