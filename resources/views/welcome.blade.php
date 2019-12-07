@@ -239,18 +239,9 @@
 
       <!-- Footer Social Icons -->
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Around the Web</h4>
-        <a class="btn btn-outline-light btn-social mx-1" href="#">
-          <i class="fab fa-fw fa-facebook-f"></i>
-        </a>
-        <a class="btn btn-outline-light btn-social mx-1" href="#">
-          <i class="fab fa-fw fa-twitter"></i>
-        </a>
-        <a class="btn btn-outline-light btn-social mx-1" href="#">
-          <i class="fab fa-fw fa-linkedin-in"></i>
-        </a>
-        <a class="btn btn-outline-light btn-social mx-1" href="#">
-          <i class="fab fa-fw fa-dribbble"></i>
+        <h4 class="text-uppercase mb-4">Github repository</h4>
+        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/robo58/FSRE-RWA-projekt" target="_blank">
+          <i class="fab fa-github"></i>
         </a>
       </div>
 
