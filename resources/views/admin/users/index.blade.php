@@ -22,7 +22,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <th scope="row">{{$user->id}}</th>
-                                <td><a href="{{route('profile.kurac',$user->id)}}">{{$user->username}}</a></td>
+                                <td><a href="{{route('admin.users.index',$user->id)}}">{{$user->username}}</a></td>
                                 <td>{{$user->email}}</td>
                                 <td>{{ implode(', ' , $user->roles()->get()->pluck('name')->toArray()) }}</td>
                                 <td>
