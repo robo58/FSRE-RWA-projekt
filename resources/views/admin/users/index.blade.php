@@ -12,7 +12,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Username</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Roles</th>
                                 <th scope="col">Actions</th>
@@ -22,7 +22,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <th scope="row">{{$user->id}}</th>
-                                <td>{{$user->name}}</td>
+                                <td><a href="{{route('profile.kurac',$user->id)}}">{{$user->username}}</a></td>
                                 <td>{{$user->email}}</td>
                                 <td>{{ implode(', ' , $user->roles()->get()->pluck('name')->toArray()) }}</td>
                                 <td>

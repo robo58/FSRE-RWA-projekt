@@ -16,15 +16,30 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/freelancer.min.css') }}" rel="stylesheet">
     <style>
         body{
-            background-image:url("img/halo5.jpg")!important;
+            background-image:url("{{ asset('img/halo5.jpg') }}")!important;
         }
         .py-4{
+
             padding-top: 8rem !important;
+        }
+        .profile-image{
+            width: 150px;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .social-media-links{
+            width: 150px;
+        }
+        .social-media-links a{
+            color: #666;
+        }
+        .social-media-links a:hover{
+            color: #444;
         }
     </style>
 </head>
@@ -69,15 +84,23 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                <a class="dropdown-item" href="{{route('profiles.show',Auth::user())}}">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="{{route('profiles.edit',Auth::user())}}">
+                                    <i class="fas fa-user"></i>Edit Profile
                                 </a>
                                 @can('manage-users')
+                                <div class="dropdown-divider"></div>
                                 <a href="{{route('admin.users.index')}}" class="dropdown-item">
-                                    User Management
+                                    <i class="fas fa-users"></i> User Management
                                 </a>
                                 @endcan
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                   <i class="fas fa-sign-out-alt"></i>  {{ __('Logout') }}
+                                </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
