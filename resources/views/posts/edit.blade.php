@@ -19,6 +19,12 @@
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
+                <label for="tags"><h2 class="text-secondary">Tags:</h2></label>
+                <select class="form-control select2-multi" name="tags[]" id="tag_id" multiple="multiple">
+                    @foreach ($tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
                 <label for="body"><h2 class="text-secondary">Body:</h2></label>
                 <textarea name="body" id="body" cols="50" rows="10" style="width:637px; height:196px;">{{$post->body}}</textarea>
             </div>
@@ -48,5 +54,12 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.select2-multi').select2();
+        //$('.select2-multi').select2().val({{ json_encode($post->tags()->getRelatedIds()) }}).trigger('change');
+    });
+</script>
 
 @endsection

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -9,21 +10,33 @@
             <hr>
             <form method="POST" action="{{route('posts.store')}}">
                 @csrf
-                <label for="title">Title:</label>
+                <label for="title"><h2 class="text-secondary">Title:</h2></label>
                 <input type="text" name="title" id="title" class="form-control">
-                <label for="category">Category:</label>
+                <label for="category"><h2 class="text-secondary">Category:</h2></label>
                 <select class="form-control" name="category_id" id="category_id">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
-                <label for="body">Post Body:</label>
-                <textarea name="body" id="body" cols="30" rows="10" style="width:637px; height:196px;"></textarea>
-                <button type="submit" class="btn btn-succes btn-lg btn-block">Create Post</button>
+                <label for="tags"><h2 class="text-secondary">Tags:</h2></label>
+                <select class="form-control select2-multi" name="tags[]" id="tag_id" multiple="multiple">
+                    @foreach ($tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
+                <label for="body"><h2 class="text-secondary">Body:</h2></label>
+                <textarea name="body" id="body" cols="100" rows="5" ></textarea>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Create Post</button>
             </form>
     </div>
 </div>   
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.select2-multi').select2();
+    });
+</script>
 @endsection

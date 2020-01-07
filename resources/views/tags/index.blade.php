@@ -8,7 +8,7 @@
   <div class="row">
       
       <div class="col-md-9">
-          <h1 class="text-white">Categories</h1>
+          <h1 class="text-white">Tags</h1>
           <table class="table table-dark">
 
               <thead>
@@ -20,12 +20,12 @@
               </thead>
               
               <tbody>
-                  @foreach ($categories as $category)
+                  @foreach ($tags as $tag)
                     <tr>
-                        <th class="text-white">{{$category->id}}</th>
-                        <td class="text-white">{{$category->name}}</td>
+                        <th class="text-white">{{$tag->id}}</th>
+                        <td class="text-white">{{$tag->name}}</td>
                         <td>
-                            <form action="{{route('categories.destroy', $category)}}" method="POST" class="float-left">
+                            <form action="{{route('tags.destroy', $tag)}}" method="POST" class="float-left">
                             @csrf
                             {{ method_field('DELETE') }}
 
@@ -42,15 +42,12 @@
       
       <div class="col-md-3">
           <div class="well">
-              <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('tags.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                    <h2 class="text-white">New Category</h2>
+                    <h2 class="text-white">New tag</h2>
                     <label for="name" class="text-white">Name</label>
                     <input type="text" name="name" id="name" class="form-control">
-                    <label for="avatar" class="text-white">Add picture:</label>
-                    <input type="file" name="avatar" id="avatar" class="form-control">
-                    <label for="##">       </label>
-                    <button type="submit" class="btn btn-primary btn-block">Create New Category</button>
+                    <button type="submit" class="btn btn-primary btn-block">Create New tag</button>
               </form>
           </div>
       </div>

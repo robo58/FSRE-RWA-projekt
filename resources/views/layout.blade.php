@@ -14,7 +14,8 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+  <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
+  
   <!-- Theme CSS -->
   <link href="css/freelancer.min.css" rel="stylesheet">
 <style>
@@ -140,6 +141,7 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/freelancer.min.js"></script>
+  <script src="{{asset('js/select2.min.js')}}"></script>
 
 </body>
 

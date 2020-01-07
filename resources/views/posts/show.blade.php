@@ -10,6 +10,23 @@
             <h1>{{$post->title}}</h1>
             <h2>{{ $post->category->name }}</h2>
             <p class="lead">{{$post->body}}</p>
+            <hr>
+            <div class="tags">
+                @foreach ($post->tags as $tag)
+                    <span class="label text-white rounded" style="
+                    background-color: #777;
+                     display: inline;
+                    padding: .2em .6em .3em;
+                    font-size: 75%;
+                    font-weight: 700;
+                    line-height: 1;
+                    color: #fff;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: baseline;
+                    border-radius: .25em;">{{$tag->name}}</span>
+                @endforeach
+            </div>
         </div>
         <div class="col-md-4">
             <div class="well bg-white rounded">

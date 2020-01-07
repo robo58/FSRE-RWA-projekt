@@ -8,6 +8,7 @@ use App\Role;
 use Gate;
 use App\User;
 use Illuminate\Http\Request;
+use Image;
 
 class CategoryController extends Controller
 {
@@ -22,7 +23,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
         if (Gate::denies('manage-users')) {
             return redirect(url('/'));
         }
@@ -45,6 +45,13 @@ class CategoryController extends Controller
         ));
         $category = new Category;
         $category->name=$request->name;
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.'.$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(330,186)->save(public_path('img/categories/'. $filename));
+        
+            $category->avatar = $filename;
+        }
         $category->save();
         return redirect()->route('categories.index');
     }

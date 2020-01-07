@@ -46,7 +46,7 @@
     <!-- Portfolio Grid Items -->
     <div class="row">
 
-      <!-- Categories-->
+      <!-- Categories -->
       @foreach ($categories as $category)
           
       
@@ -57,7 +57,7 @@
               <i class="fas fa-plus fa-3x"></i>
             </div>
           </div>
-          <img class="img-fluid" src="img/csgo.jpg" alt="">
+          <img class="img-fluid" src="{{ asset('img/categories') }}/{{$category->avatar}}" alt="">
           <p class="page-section-heading text-center  text-secondary mb-0">{{$category->name}}</p>
         </div>
       </div>

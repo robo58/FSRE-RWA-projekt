@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
-use Illuminate\Http\Request;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -27,7 +28,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create')->withCategories($categories);
+        $tags = Tag::all();
+        return view('posts.create')->withCategories($categories)->withTags($tags);
     }
 
     /**
@@ -52,6 +54,7 @@ class PostController extends Controller
         $post->category_id=$request->category_id;
 
         $post->save();
+        $post->tags()->sync($request->tags,false);
         //redirect to page
         return redirect()->route('posts.show', $post->id);
     }
@@ -78,7 +81,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all();
-        return view('posts.edit')->withPost($post)->withCategories($categories);
+        $tags = Tag::all();
+        return view('posts.edit')->withPost($post)->withCategories($categories)->withTags($tags);
     }
 
     /**
@@ -103,7 +107,7 @@ class PostController extends Controller
         $post->category_id = $request->input('category_id');
         $post->save();
 
-        return redirect()->route('posts.show',$post->id);
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**

@@ -11,13 +11,13 @@
     <title>Game Shop</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
     <!-- Styles -->
     <link href="{{ asset('css/freelancer.min.css') }}" rel="stylesheet">
     <style>
@@ -113,6 +113,8 @@
 
         <main class="py-4">
             @yield('content')
+
+            <script src="{{asset('js/select2.min.js')}}"></script>
         </main>
     </div>
 </body>
