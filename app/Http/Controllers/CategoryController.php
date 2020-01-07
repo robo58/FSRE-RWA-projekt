@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Controllers\Controller;
+use App\Role;
+use Gate;
+use App\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +22,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
+        
+        if (Gate::denies('manage-users')) {
+            return redirect(url('/'));
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $categories = Category::all();
+
+        return view('categories.index')->withCategories($categories);
     }
 
     /**
@@ -35,7 +40,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'name'=>'required|max:255'
+        ));
+        $category = new Category;
+        $category->name=$request->name;
+        $category->save();
+        return redirect()->route('categories.index');
     }
 
     /**

@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
+use Image;
 
 class ProfilesController extends Controller
 {
@@ -56,9 +57,10 @@ class ProfilesController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($user_id)
     {
-        return view('profiles.profile')->withUser($user);
+        $user = User::find($user_id);
+        return view('profiles.profile')->with('user', $user);
     }
 
     /**
@@ -95,14 +97,17 @@ class ProfilesController extends Controller
         $user->last_name = $request->last_name;
         $user->username = $request->username;
         $user->email = $request->email;
+        $user->facebook = $request->facebook;
+        $user->youtube = $request->youtube;
+        $user->instagram = $request->instagram;
+        $user->about = $request->about;
+
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.'.$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('img/users/'. $filename));
         
-        if ($request->has('avatar')) {
-            $image = $request->file('avatar');
-            $name = Str::slug($request->input('name')).'_'.time();
-            $folder = 'public/img/users/';
-            $filePath = $folder . $name. '.' . $image->GetClientOriginalExtension();
-            $this->uploadOne($image, $folder, 'public', $name);
-            $user->avatar=$filePath;
+            $user->avatar = $filename;
         }
 
         $user->save();

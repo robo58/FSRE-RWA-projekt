@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="container">
-    <div class="col-md-12">
+    <div class="col-xs-12">
         <div class="card">
             <div class="card-header"><h4>Edit Your Profile</h4></div>
                 <div class="row justify-content-center mt-4">
                         <div class="col-xs-4">
-                            <img src="{{ asset(auth()->user()->avatar) }}" style="width:150px; height:150px; border-radius:50%;"  alt="Your Profile Image">
+                            <img src="{{ asset('img/users') }}/{{Auth::user()->avatar}}" style="width:150px; height:150px; border-radius:50%;"  alt="Your Profile Image">
                             <p class= " text-center social-media-links">
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-youtube-square"></i></a>
+                                <a href="{{ Auth::user()->facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
+                                <a href="{{ Auth::user()->instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="{{ Auth::user()->youtube}}" target="_blank"><i class="fab fa-youtube-square"></i></a>
                             </p>
                         </div>
                         <div class="col-xs-12">
@@ -73,7 +73,7 @@
                                 <input type="file" id="avatar" name="avatar" class="form-control">
                             </div>
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-user-edit"></i>Edit

@@ -87,9 +87,7 @@
                                 <a class="dropdown-item" href="{{route('profiles.show',Auth::user())}}">
                                     <i class="fas fa-user"></i> Profile
                                 </a>
-                                <a class="dropdown-item" href="{{route('profiles.edit',Auth::user())}}">
-                                    <i class="fas fa-user"></i>Edit Profile
-                                </a>
+
                                 @can('manage-users')
                                 <div class="dropdown-divider"></div>
                                 <a href="{{route('admin.users.index')}}" class="dropdown-item">
