@@ -91,6 +91,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if (Gate::denies('delete-users')) {
+            return redirect(route('categories.index'));
+        }
+        $category->delete();
+        return redirect(route('categories.index'));
     }
 }

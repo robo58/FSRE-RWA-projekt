@@ -12,6 +12,7 @@
                   <tr>
                       <th class="text-white">#</th>
                       <th class="text-white">Name</th>
+                      <th>   </th>
                   </tr>
               </thead>
               
@@ -20,6 +21,14 @@
                     <tr>
                         <th class="text-white">{{$category->id}}</th>
                         <td class="text-white">{{$category->name}}</td>
+                        <td>
+                            <form action="{{route('categories.destroy', $category)}}" method="POST" class="float-left">
+                            @csrf
+                            {{ method_field('DELETE') }}
+
+                            <button type="submit" class="btn btn-warning">Delete</button>
+                        </form>
+                    </td>
                     </tr> 
                   @endforeach
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('posts.index')->withPosts($posts);
     }
 
     /**
@@ -24,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('posts.create')->withCategories($categories);
     }
 
     /**
@@ -35,7 +38,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $this->validate($request, array(
+            'title'=>'required|max:255',
+            'body'=>'required',
+            'category_id'=>'required|numeric'
+        ));
+        //store in the database
+        $post = new Post;
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->category_id=$request->category_id;
+
+        $post->save();
+        //redirect to page
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -44,9 +62,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.show')->withPost($post);
     }
 
     /**
@@ -55,9 +74,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('posts.edit')->withPost($post)->withCategories($categories);
     }
 
     /**
@@ -67,9 +88,22 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'title'=>'required|max:255',
+            'body'=>'required',
+            'category_id'=>'required|numeric'
+        ));
+        
+        $post = Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->category_id = $request->input('category_id');
+        $post->save();
+
+        return redirect()->route('posts.show',$post->id);
     }
 
     /**
@@ -78,8 +112,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post=Post::find($id);
+        
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }
