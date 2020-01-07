@@ -2,10 +2,13 @@
 
 @section('content')
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
   <div class="row">
       
       <div class="col-md-9">
-          <h1 class="text-black">Categories</h1>
+          <h1 class="text-white">Categories</h1>
           <table class="table table-dark">
 
               <thead>
@@ -49,5 +52,9 @@
           </div>
       </div>
   </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection

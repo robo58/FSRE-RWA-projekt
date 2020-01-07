@@ -2,9 +2,12 @@
 
 @section('content')
 
-    <div class="row">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+        <div class="row">
         <div class="col-md-10">
-            <h1>All Posts</h1>
+            <h1 class="text-secondary">All Posts</h1>
         </div>
         <div class="col-md-2">
         <a href="{{route('posts.create')}}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create new post</a>
@@ -40,5 +43,9 @@
                 </tbody>
             </table>
         </div>
+        </div>
     </div>
+</div>
+</div>
+
 @endsection

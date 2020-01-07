@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
             <h1>Create New Post</h1>
@@ -20,4 +23,7 @@
             </form>
     </div>
 </div>   
+        </div>
+    </div>
+</div>
 @endsection

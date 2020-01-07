@@ -46,7 +46,10 @@
     <!-- Portfolio Grid Items -->
     <div class="row">
 
-      <!-- Portfolio Item 1 -->
+      <!-- Categories-->
+      @foreach ($categories as $category)
+          
+      
       <div class="col-md-6 col-lg-4">
         <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -55,74 +58,12 @@
             </div>
           </div>
           <img class="img-fluid" src="img/csgo.jpg" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">Shooters</p>
+          <p class="page-section-heading text-center  text-secondary mb-0">{{$category->name}}</p>
         </div>
       </div>
 
-      <!-- Portfolio Item 2 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div class="portfolio-item-caption-content text-center text-white">
-              <i class="fas fa-plus fa-3x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="img/witcher.jpg" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">MMO/RPG</p>
-        </div>
-      </div>
-
-      <!-- Portfolio Item 3 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div class="portfolio-item-caption-content text-center text-white">
-              <i class="fas fa-plus fa-3x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="img/cars.jpg" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">Racing</p>
-        </div>
-      </div>
-
-      <!-- Portfolio Item 4 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div class="portfolio-item-caption-content text-center text-white">
-              <i class="fas fa-plus fa-3x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="img/dota.jpg" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">MOBA</p>
-        </div>
-      </div>
-
-      <!-- Portfolio Item 5 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div class="portfolio-item-caption-content text-center text-white">
-              <i class="fas fa-plus fa-3x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="img/fight.jpg" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">Fighting</p>
-        </div>
-      </div>
-
-      <!-- Portfolio Item 6 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-            <div class="portfolio-item-caption-content text-center text-white">
-              <i class="fas fa-plus fa-3x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="img/dawn.jpg" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">Horror</p>
-        </div>
-      </div>
+      @endforeach
+     
 
     </div>
     <!-- /.row -->

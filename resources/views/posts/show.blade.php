@@ -2,8 +2,11 @@
 
 @section('content')
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 bg-white rounded text-center">
             <h1>{{$post->title}}</h1>
             <h2>{{ $post->category->name }}</h2>
             <p class="lead">{{$post->body}}</p>
@@ -34,5 +37,8 @@
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 
 @endsection

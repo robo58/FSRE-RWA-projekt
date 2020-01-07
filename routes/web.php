@@ -1,9 +1,12 @@
 <?php
 
-
+use App\Category;
+use App\Post;
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories=Category::all();
+    $posts=Post::all();
+    return view('welcome')->withCategories($categories)->withPosts($posts);
 });
 
 Auth::routes();
