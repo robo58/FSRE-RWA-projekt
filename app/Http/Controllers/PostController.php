@@ -54,7 +54,7 @@ class PostController extends Controller
         $post->category_id=$request->category_id;
 
         $post->save();
-        $post->tags()->sync($request->tags,false);
+        $post->tags()->sync($request->tags, false);
         //redirect to page
         return redirect()->route('posts.show', $post->id);
     }
@@ -106,7 +106,7 @@ class PostController extends Controller
         $post->body = $request->input('body');
         $post->category_id = $request->input('category_id');
         $post->save();
-
+        $post->tags()->sync($request->tags, false);
         return redirect()->route('posts.show', $post->id);
     }
 
@@ -119,7 +119,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post=Post::find($id);
-        
+        $post->tags()->detach();
         $post->delete();
 
         return redirect()->route('posts.index');

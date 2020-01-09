@@ -13,18 +13,7 @@
             <hr>
             <div class="tags">
                 @foreach ($post->tags as $tag)
-                    <span class="label text-white rounded" style="
-                    background-color: #777;
-                     display: inline;
-                    padding: .2em .6em .3em;
-                    font-size: 75%;
-                    font-weight: 700;
-                    line-height: 1;
-                    color: #fff;
-                    text-align: center;
-                    white-space: nowrap;
-                    vertical-align: baseline;
-                    border-radius: .25em;">{{$tag->name}}</span>
+                    <span class="label-default text-white rounded">{{$tag->name}}</span>
                 @endforeach
             </div>
         </div>
@@ -54,8 +43,40 @@
             </div>
         </div>
     </div>
+    <div class="row" style="padding-top:20px">
+        <div class="col-md-8 col-md-offset-2 rounded" style="padding-top:20px; background:white;">
+            @foreach ($post->comments as $comment)
+                <h6>Name: {{$comment->name}}</h6>
+                <p><h6>Comment:</h6> <br>{{$comment->comment}}</p>
+                <hr>            
+            @endforeach
+        </div>
+    </div>
+    <div class="row">
+        <div id="comment-form" class="col-md-8 col-md-offset-2" style="padding-top:50px;">
+            <form action="{{route('comments.store',$post->id)}}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name"><h4 class="text-danger">Name:</h4></label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email"><h4 class="text-danger">Email:</h4></label>
+                        <input type="text" name="email" id="email" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="comment"><h4 class="text-danger">Comment:</h4></label>
+                        <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
+                        <button type="submit" class="btn btn-success btn-block">Add Comment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
         </div>
     </div>
 </div>
+
 
 @endsection

@@ -4,12 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Users</div>
-
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table rounded"  style="background:white;">
+                        <thead class="rounded" style="background:white;">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Username</th>
@@ -18,7 +16,7 @@
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="rounded" style="background:white;">
                             @foreach($users as $user)
                             <tr>
                                 <th scope="row">{{$user->id}}</th>
@@ -45,8 +43,8 @@
 
                         </tbody>
                     </table>
+                
                 </div>
-            </div>
         </div>
     </div>
 </div>

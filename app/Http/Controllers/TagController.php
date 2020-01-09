@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     
@@ -32,7 +32,7 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,array('name'=>'required|max:255'));
+        $this->validate($request, array('name'=>'required|max:255'));
         $tag = new Tag;
         $tag->name = $request->name;
         $tag->save();
@@ -48,7 +48,8 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        $tag=Tag::find($tag->id);
+        return view('tags.show')->withTag($tag);
     }
 
     /**
@@ -59,7 +60,8 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        $tag=Tag::find($tag->id);
+        return view('tags.edit')->withTag($tag);
     }
 
     /**
@@ -71,7 +73,13 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $this->validate($request, array(
+            'name'=>'required|max:255'
+        ));
+        $tag=Tag::find($tag->id);
+        $tag->name=$request->name;
+        $tag->save();
+        return redirect()->route('tags.show', $tag)->withTag($tag);
     }
 
     /**
@@ -82,6 +90,9 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag=Tag::find($tag->id);
+        $tag->posts()->detach();
+        $tag->delete();
+        return redirect()->route('tags.index');
     }
 }

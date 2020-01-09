@@ -16,6 +16,7 @@
                       <th class="text-white">#</th>
                       <th class="text-white">Name</th>
                       <th>   </th>
+                      <th>   </th>
                   </tr>
               </thead>
               
@@ -24,6 +25,9 @@
                     <tr>
                         <th class="text-white">{{$tag->id}}</th>
                         <td class="text-white">{{$tag->name}}</td>
+                        <td>
+                            <a href="{{route('tags.show',$tag)}}" class="btn btn-info">View</a>
+                        </td>
                         <td>
                             <form action="{{route('tags.destroy', $tag)}}" method="POST" class="float-left">
                             @csrf
