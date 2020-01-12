@@ -8,7 +8,7 @@
     <div class="col-md-8 col-md-offset-2">
             <h1>Create New Post</h1>
             <hr>
-            <form method="POST" action="{{route('posts.store')}}">
+            <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
                 @csrf
                 <label for="title"><h2 class="text-secondary">Title:</h2></label>
                 <input type="text" name="title" id="title" class="form-control">
@@ -25,7 +25,9 @@
                     @endforeach
                 </select>
                 <label for="body"><h2 class="text-secondary">Body:</h2></label>
-                <textarea name="body" id="body" cols="100" rows="5" ></textarea>
+                <textarea name="body" id="mytextarea" cols="100" rows="5" ></textarea>
+                <label for="avatar" class="text-white">Add picture:</label>
+                <input type="file" name="avatar" id="avatar" class="form-control">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Create Post</button>
             </form>
     </div>

@@ -6,10 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
     <div class="row">
-        <div class="col-md-8 bg-white rounded text-center">
-            <h1>{{$post->title}}</h1>
-            <h2>{{ $post->category->name }}</h2>
-            <p class="lead">{{$post->body}}</p>
+        <div class="col-md-9 bg-white rounded">
+            <p class="lead">{!!$post->body!!}</p>
             <hr>
             <div class="tags">
                 @foreach ($post->tags as $tag)
@@ -17,10 +15,14 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="well bg-white rounded">
+                <div class="author-info">
+                    <img src="{{ asset('img/users') }}/{{$user->avatar}}" class="author-img">  
+                </div> 
+                <h6>{{$user->first_name}}</h6><h6>{{$user->last_name}}</h6>
                 <dl class="dl-horizontal" style="padding:20px 0 0 20px;">
-                    <dt>Created at:</dt>
+                    <dt>Posted at:</dt>
                     <dd>{{date('j M, Y H:i',strtotime($post->created_at))}}</dd>
                 </dl>
                 <dl class="dl-horizontal" style="padding:0 0 0 20px;">
@@ -28,6 +30,7 @@
                     <dd>{{date('j M, Y H:i',strtotime($post->updated_at))}}</dd>
                 </dl>
                 <hr>
+                @can('manage-users')
                 <div class="row">
                     <div class="col-sm-6" style="padding:0 0 10px 20px;">
                         <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-block">Edit</a>
@@ -40,15 +43,38 @@
                     </form>
                     </div>
                 </div>
+                @endcan
+            </div>
+            <div class="sidebar">
+                <p>this is a sidebar</p>
             </div>
         </div>
     </div>
     <div class="row" style="padding-top:20px">
         <div class="col-md-8 col-md-offset-2 rounded" style="padding-top:20px; background:white;">
+            <h3 class="comment-title">
+                {{$post->comments()->count()}} Comments
+            </h3>
             @foreach ($post->comments as $comment)
-                <h6>Name: {{$comment->name}}</h6>
-                <p><h6>Comment:</h6> <br>{{$comment->comment}}</p>
-                <hr>            
+            <div class="comment">
+                <div class="author-info">
+                    <img src="{{ asset('img/users') }}/{{($post->commentAvatar($comment))}}" class="author-img">
+                    <div class="author-name">  
+                        <h4>{{$comment->name}}</h4>
+                        <p class="author-time">{{date('j M, Y H:i',strtotime($comment->created_at))}}</p>
+                    </div> 
+                    <form action="{{route('comments.destroy',$comment->id)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-xs btn-danger float-right"><i class="fas fa-trash"></i></button>
+                    </form>
+                    <a href="{{route('comments.edit',$comment->id)}}" class="btn btn-xs btn-primary float-right"><i class="fas fa-pen"></i></a>
+                </div>
+                <div class="comment-content">
+                {{$comment->comment}}
+                <hr>
+                </div>
+            </div>            
             @endforeach
         </div>
     </div>

@@ -15,7 +15,8 @@
                   <tr>
                       <th class="text-white">#</th>
                       <th class="text-white">Name</th>
-                      <th>   </th>
+                      <th></th>
+                      <th></th>
                   </tr>
               </thead>
               
@@ -25,10 +26,15 @@
                         <th class="text-white">{{$category->id}}</th>
                         <td class="text-white">{{$category->name}}</td>
                         <td>
-                            <form action="{{route('categories.destroy', $category)}}" method="POST" class="float-left">
+                            <form action="{{route('categories.show',$category)}}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-info">View Posts</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{route('categories.destroy', $category)}}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-
                             <button type="submit" class="btn btn-warning">Delete</button>
                         </form>
                     </td>

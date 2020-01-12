@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Role;
 use Gate;
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use Image;
 
@@ -23,12 +24,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        if (Gate::denies('manage-users')) {
-            return redirect(url('/'));
-        }
-
         $categories = Category::all();
-
+        if (Gate::denies('manage-users')) {
+            return redirect(URL('/'));
+        }
         return view('categories.index')->withCategories($categories);
     }
 
@@ -40,6 +39,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $categories=Category::all();
+        if (Gate::denies('delete-users')) {
+            return view('categories.index')->withCategories($categories);
+        }
         $this->validate($request, array(
             'name'=>'required|max:255'
         ));
@@ -64,7 +67,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category=Category::find($category->id);
+        $posts=Post::all()->where('category_id',$category->id);
+        return view('categories.show')->withCategory($category)->withPosts($posts);
     }
 
     /**

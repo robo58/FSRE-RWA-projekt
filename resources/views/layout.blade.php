@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
-  
+  <script src="https://cdn.tiny.cloud/1/kvm3r8ah3dzqtleksdugz6masv1858dk8t7qzvpvy81456na/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <!-- Theme CSS -->
   <link href="css/freelancer.min.css" rel="stylesheet">
 <style>
@@ -23,6 +23,12 @@
             background-image:url("img/halo5.jpg")!important;
           }
 </style>
+ <script>
+  tinymce.init({
+    selector: '#mytextarea'
+    
+  });
+</script>
 </head>
 
 <body id="page-top">

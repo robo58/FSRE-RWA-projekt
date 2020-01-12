@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 use App\Tag;
+use App\User;
+use App\Common;
+use Gate;
+use Image;
 
 class PostController extends Controller
 {
@@ -48,11 +52,18 @@ class PostController extends Controller
         ));
         //store in the database
         $post = new Post;
-
+        
         $post->title = $request->title;
         $post->body = $request->body;
         $post->category_id=$request->category_id;
-
+        $post->user_id=Auth()->id();
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.'.$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(330,186)->save(public_path('img/posts/'. $filename));
+        
+            $post->avatar = $filename;
+        }
         $post->save();
         $post->tags()->sync($request->tags, false);
         //redirect to page
@@ -68,7 +79,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show')->withPost($post);
+        $user=User::find($post->user_id);
+        return view('posts.show')->withPost($post)->withUser($user);
     }
 
     /**
@@ -80,9 +92,15 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('posts.edit')->withPost($post)->withCategories($categories)->withTags($tags);
+        if (Gate::denies('manage-users')) {
+            return redirect(route('posts.show', $post->id));
+        } elseif ((Auth()->id()!=$post->user_id) && Gate::denies('edit-users')) {
+            return redirect(route('posts.show', $post->id));
+        } else {
+            $categories = Category::all();
+            $tags = Tag::all();
+            return view('posts.edit')->withPost($post)->withCategories($categories)->withTags($tags);
+        }
     }
 
     /**
@@ -105,6 +123,13 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->category_id = $request->input('category_id');
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.'.$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(330,186)->save(public_path('img/posts/'. $filename));
+        
+            $post->avatar = $filename;
+        }
         $post->save();
         $post->tags()->sync($request->tags, false);
         return redirect()->route('posts.show', $post->id);
@@ -119,9 +144,14 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post=Post::find($id);
-        $post->tags()->detach();
-        $post->delete();
-
-        return redirect()->route('posts.index');
+        if (Gate::denies('manage-users')) {
+            return redirect(route('posts.show', $post->id));
+        } elseif ((Auth()->id()  != $post->user_id) && Gate::denies('edit-users')) {
+            return redirect(route('posts.show', $post->id));
+        } else {
+            $post->tags()->detach();
+            $post->delete();
+            return redirect()->route('posts.index');
+        }
     }
 }

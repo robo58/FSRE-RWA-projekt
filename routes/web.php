@@ -23,4 +23,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
     Route::resource('/users', 'UsersController', ['except' => ['show','create','store']]);
 });
 
+//comments
 Route::post('comments/{post_id}', ['uses'=>'CommentController@store','as'=>'comments.store']);
+Route::get('comments/{post_id}/edit', ['uses'=>'CommentController@edit','as'=>'comments.edit']);
+Route::put('comments/{post_id}', ['uses'=>'CommentController@update','as'=>'comments.update']);
+Route::delete('comments/{post_id}', ['uses'=>'CommentController@destroy','as'=>'comments.destroy']);

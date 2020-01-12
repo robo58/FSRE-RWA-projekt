@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
     <div class="row">
-        <form method="POST" action="{{route('posts.update',$post->id)}}">
+        <form method="POST" action="{{route('posts.update',$post->id)}}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             
@@ -26,7 +26,7 @@
                     @endforeach
                 </select>
                 <label for="body"><h2 class="text-secondary">Body:</h2></label>
-                <textarea name="body" id="body" cols="50" rows="10" style="width:637px; height:196px;">{{$post->body}}</textarea>
+                <textarea name="body" id="mytextarea" cols="50" rows="10" style="width:637px; height:196px;">{{$post->body}}</textarea>
             </div>
             <div class="col-md-4">
                 <div class="well bg-grey rounded">
@@ -39,12 +39,14 @@
                         <dd>{{date('j M, Y H:i',strtotime($post->updated_at))}}</dd>
                     </dl>
                     <hr>
+                    <label for="avatar" class="text-white">Add picture:</label>
+                    <input type="file" name="avatar" id="avatar" class="form-control">
                     <div class="row">
                         <div class="col-sm-6">
-                            <a href="{{route('posts.show',$post->id)}}" class="btn btn-primary btn-block">Cancel</a>
+                            <a href="{{route('posts.show',$post->id)}}" class="btn btn-danger btn-block">Cancel</a>
                         </div>
                         <div class="col-sm-6">
-                            <button type="submit" class="btn btn-succes btn-block">Save</button>
+                            <button type="submit" class="btn btn-success btn-block">Save</button>
                         </div>
                     </div>
                 </div>

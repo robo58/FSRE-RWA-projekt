@@ -13,6 +13,7 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
+        "tinymce/tinymce": ">= 5",
         "twitter/bootstrap": "^4.3"
     },
     "require-dev": {
