@@ -14,6 +14,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="https://cdn.tiny.cloud/1/kvm3r8ah3dzqtleksdugz6masv1858dk8t7qzvpvy81456na/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -207,7 +209,15 @@
                                 @can('manage-users')
                                 <div class="dropdown-divider"></div>
                                 <a href="{{route('admin.users.index')}}" class="dropdown-item">
-                                    <i class="fas fa-users"></i> User Management
+                                    <i class="fas fa-users"></i> Upravljaj Korisnicima
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{route('categories.index')}}" class="dropdown-item">
+                                    <i class="fas fa-list-ul"></i> Upravljaj Kategorijama
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{route('posts.index')}}" class="dropdown-item">
+                                    <i class="fas fa-copy"></i> Upravljaj Objavama
                                 </a>
                                 @endcan
                                 <div class="dropdown-divider"></div>

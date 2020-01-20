@@ -4,10 +4,10 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-sm-12">
     <div class="row">
-        <div class="col-md-9 bg-white rounded">
-            <p class="lead">{!!$post->body!!}</p>
+        <div class="col-sm-9 bg-white rounded">
+            <p class="lead">{!! $post->body !!}</p>
             <hr>
             <div class="tags">
                 @foreach ($post->tags as $tag)
@@ -15,8 +15,25 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-sm-3">
             <div class="well bg-white rounded">
+                @if (Auth::check())
+                <div class="favorite justify-content-center">
+                    @if (!($post->checkFavorite($post->id)))
+                        <form method="POST" action="{{route('favor',$post) }}">
+                            @method('PUT')
+                            @csrf
+                            <button type="submit"><i class="far fa-heart"></i></button>
+                        </form>
+                    @else
+                        <form method="POST" action="{{route('unfavor',$post)}}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit"><i class="fas fa-heart"></i></button>
+                        </form>
+                    @endif
+                </div>
+            @endif
                 <div class="author-info">
                     <img src="{{ asset('img/users') }}/{{$user->avatar}}" class="author-img">  
                 </div> 
@@ -83,14 +100,6 @@
             <form action="{{route('comments.store',$post->id)}}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="name"><h4 class="text-danger">Name:</h4></label>
-                        <input type="text" name="name" id="name" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="email"><h4 class="text-danger">Email:</h4></label>
-                        <input type="text" name="email" id="email" class="form-control">
-                    </div>
                     <div class="col-md-12">
                         <label for="comment"><h4 class="text-danger">Comment:</h4></label>
                         <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>
@@ -104,5 +113,16 @@
     </div>
 </div>
 
+
+<script>
+    new window.Vue({
+      el: '#app',
+      
+      components: {
+        'app-world': window.httpVueLoader('/js/components/AppWorld.vue');
+        Vue.component('favorite', require('Favorite.vue'));
+      },
+    })
+  </script>
 
 @endsection

@@ -9,6 +9,12 @@
     <!-- Masthead Avatar Image -->
     <img class="masthead-avatar mb-5" src="img/avatar.png" alt="">
 
+    <div class="md-form form-lg mb-5">
+      <form action="{{route('search')}}" method="GET" class="search-form">
+        <i class="fa search-icon"></i>
+        <input type="text" name="query" id="query" class="form-control form-control-lg search-box" placeholder="Search catalog">
+      </form>
+    </div>
     <!-- Masthead Heading -->
     <h1 class="masthead-heading text-uppercase mb-0">FSRE Game Shop</h1>
 

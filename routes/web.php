@@ -14,6 +14,9 @@ Auth::routes();
 Route::resource('profiles', 'ProfilesController');
 
 Route::resource('posts', 'PostController');
+Route::get('/search', 'PostController@search')->name('search');
+Route::put('/favor/{post_id}', 'PostController@favoritePost')->name('favor');
+Route::delete('/unfavor/{post_id}', 'PostController@unFavoritePost')->name('unfavor');
 
 Route::resource('categories', 'CategoryController');
 

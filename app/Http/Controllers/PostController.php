@@ -10,6 +10,7 @@ use App\User;
 use App\Common;
 use Gate;
 use Image;
+use Auth;
 
 class PostController extends Controller
 {
@@ -60,7 +61,7 @@ class PostController extends Controller
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.'.$avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(330,186)->save(public_path('img/posts/'. $filename));
+            Image::make($avatar)->resize(330, 186)->save(public_path('img/posts/'. $filename));
         
             $post->avatar = $filename;
         }
@@ -126,7 +127,7 @@ class PostController extends Controller
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.'.$avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(330,186)->save(public_path('img/posts/'. $filename));
+            Image::make($avatar)->resize(330, 186)->save(public_path('img/posts/'. $filename));
         
             $post->avatar = $filename;
         }
@@ -153,5 +154,29 @@ class PostController extends Controller
             $post->delete();
             return redirect()->route('posts.index');
         }
+    }
+    
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $posts = Post::where('title', 'like', "%$query%")->get();
+        return view('search-results')->with('posts', $posts);
+    }
+    
+
+    public function favoritePost($id)
+    {
+
+        Auth::user()->favorites()->attach($id);
+
+        return back();
+    }
+
+    public function unFavoritePost($id)
+    {
+        Auth::user()->favorites()->detach($id);
+
+        return back();
     }
 }

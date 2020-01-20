@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Common;
 use Gate;
+use Auth;
 class CommentController extends Controller
 {
     /**
@@ -40,16 +41,14 @@ class CommentController extends Controller
     {
   
         $this->validate($request, array(
-        'name'=>'required|max:255',
-        'email'=>'required|email|max:255',
         'comment'=>'required|min:5|max:2000'
        ));
 
         $post=Post::find($post_id);
         $comment=new Comment();
 
-        $comment->name=$request->name;
-        $comment->email=$request->email;
+        $comment->name=Auth::user()->username;
+        $comment->email=Auth::user()->email;
         $comment->comment=$request->comment;
         $comment->approved = true;
         $comment->post()->associate($post);
@@ -78,7 +77,7 @@ class CommentController extends Controller
     public function edit($id)
     {
         $comment=Comment::find($id);
-        if(Gate::denies('delete-users')||(Auth()->email()!=$comment->email)){
+        if(Gate::denies('delete-users')||(Auth::user()->email!=$comment->email)){
             return redirect()->route('posts.show', $comment->post_id);
         }
         $post=Post::find($comment->post_id);
@@ -111,7 +110,7 @@ class CommentController extends Controller
     {
         $comment=Comment::find($id);
         $post=Post::find($comment->post_id);
-        if(Gate::denies('delete-users')||(Auth()->email()!=$comment->email)){
+        if(Gate::denies('delete-users')||(Auth::user()->email!=$comment->email)){
             return redirect()->route('posts.show', $comment->post_id);
         }
         $comment->delete();

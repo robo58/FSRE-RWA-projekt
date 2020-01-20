@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar'=>'default.png'
         ]);
         
         $role = Role::select('id')->where('name', 'user')->first();
