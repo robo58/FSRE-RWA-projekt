@@ -11,21 +11,21 @@
             @csrf
             
             <div class="col-md-8">
-                <label for="title"><h2 class="text-secondary">Title:</h2></label>
+                <label for="title"><h2 class="text-white">Title:</h2></label>
                 <input type="text" name="title" id="title" cols="50" class="form-control" value="{{$post->title}}">
-                <label for="category"><h2 class="text-secondary">Category:</h2></label>
+                <label for="category"><h2 class="text-white">Category:</h2></label>
                 <select class="form-control" name="category_id" id="category_id">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
-                <label for="tags"><h2 class="text-secondary">Tags:</h2></label>
+                <label for="tags"><h2 class="text-white">Tags:</h2></label>
                 <select class="form-control select2-multi" name="tags[]" id="tag_id" multiple="multiple">
                     @foreach ($tags as $tag)
                         <option value="{{$tag->id}}">{{$tag->name}}</option>
                     @endforeach
                 </select>
-                <label for="body"><h2 class="text-secondary">Body:</h2></label>
+                <label for="body"><h2 class="text-white">Body:</h2></label>
                 <textarea name="body" id="mytextarea" cols="50" rows="10" style="width:637px; height:196px;">{{$post->body}}</textarea>
             </div>
             <div class="col-md-4">

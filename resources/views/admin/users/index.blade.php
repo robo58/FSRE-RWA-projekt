@@ -6,6 +6,8 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
+                    <a href="{{url()->previous()}}" class="btn btn-primary" style="margin-bottom:20px;">Back</a>
+
                     <table class="table rounded"  style="background:white;">
                         <thead class="rounded" style="background:white;">
                             <tr>
@@ -20,7 +22,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <th scope="row">{{$user->id}}</th>
-                                <td><a href="{{route('profiles.show',$user->id)}}">{{$user->username}}</a></td>
+                                <td><a href="{{route('profiles.show',$user)}}">{{$user->username}}</a></td>
                                 <td>{{$user->email}}</td>
                                 <td>{{ implode(', ' , $user->roles()->get()->pluck('name')->toArray()) }}</td>
                                 <td>

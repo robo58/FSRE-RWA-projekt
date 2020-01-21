@@ -16,7 +16,7 @@
       </form>
     </div>
     <!-- Masthead Heading -->
-    <h1 class="masthead-heading text-uppercase mb-0">FSRE Game Shop</h1>
+    <h1 class="masthead-heading text-uppercase mb-0">FSRE Games</h1>
 
     <!-- Icon Divider -->
     <div class="divider-custom divider-light">
@@ -34,11 +34,11 @@
 </header>
 
 <!-- Portfolio Section -->
-<section class="page-section portfolio" id="portfolio">
+<section class="page-section portfolio text-white" id="portfolio">
   <div class="container">
 
     <!-- Portfolio Section Heading -->
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Categories</h2>
+    <h2 class="page-section-heading text-center text-uppercase text-white mb-0">Categories</h2>
 
     <!-- Icon Divider -->
     <div class="divider-custom">
@@ -59,15 +59,13 @@
         <div class="portfolio-item mx-auto">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white">
-              <i class="fas fa-plus fa-3x"></i>
+              <p class="page-section-heading text-center  text-white mb-0">{{$category->name}}</p> 
             </div>
           </div>
           <img class="img-fluid" src="{{ asset('img/categories') }}/{{$category->avatar}}" alt="">
-          <p class="page-section-heading text-center  text-secondary mb-0">{{$category->name}}</p>
         </div>
         </a>
       </div>
-
       @endforeach
      
 
@@ -96,7 +94,7 @@
     <!-- About Section Content -->
     <div class="row">
       <div class="col-lg-10 ml-auto masthead-subheading font-weight-light">
-        <p class="lead masthead-subheading font-weight-light ">Fsre Game Shop je projekt namijenjen online prodaji digitalnih igara.Na projektu sudjeluju:</p>
+        <p class="lead masthead-subheading font-weight-light ">Fsre Games je projekt namijenjen pretrazivanju igara.Na projektu sudjeluju:</p>
         <ul>
           <li>Robert Sliskovic</li>
           <li>Branimir Raguz</li>
@@ -116,7 +114,7 @@
   <div class="container">
 
     <!-- Contact Section Heading -->
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+    <h2 class="page-section-heading text-center text-uppercase text-white mb-0">Contact us</h2>
 
     <!-- Icon Divider -->
     <div class="divider-custom">
@@ -200,7 +198,7 @@
 <!-- Copyright Section -->
 <section class="copyright py-4 text-center text-white">
   <div class="container">
-    <small>Copyright &copy; FSRE Game Shop</small>
+    <small>Copyright &copy; FSRE Games</small>
   </div>
 </section>
 

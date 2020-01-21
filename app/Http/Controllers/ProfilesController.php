@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Role;
 use Gate;
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
@@ -28,7 +29,7 @@ class ProfilesController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index')->with('users', $users);
+        return view('profiles.index')->with('users', $users);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,7 +61,8 @@ class ProfilesController extends Controller
     public function show($user_id)
     {
         $user = User::find($user_id);
-        return view('profiles.profile')->with('user', $user);
+        $posts=Post::all()->where('user_id', $user_id);
+        return view('profiles.profile')->with('user', $user)->withPosts($posts);
     }
 
     /**
@@ -69,8 +71,9 @@ class ProfilesController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($user_id)
     {
+        $user=User::find($user_id);
         return view('profiles.edit')->withUser($user);
     }
 

@@ -9,11 +9,7 @@
         <div class="col-sm-9 bg-white rounded">
             <p class="lead">{!! $post->body !!}</p>
             <hr>
-            <div class="tags">
-                @foreach ($post->tags as $tag)
-                    <span class="label-default text-white rounded">{{$tag->name}}</span>
-                @endforeach
-            </div>
+
         </div>
         <div class="col-sm-3">
             <div class="well bg-white rounded">
@@ -23,13 +19,13 @@
                         <form method="POST" action="{{route('favor',$post) }}">
                             @method('PUT')
                             @csrf
-                            <button type="submit"><i class="far fa-heart"></i></button>
+                            <button type="submit" class="btn btn-xs btn-info"><i class="far fa-heart"></i></button>
                         </form>
                     @else
                         <form method="POST" action="{{route('unfavor',$post)}}">
                             @method('DELETE')
                             @csrf
-                            <button type="submit"><i class="fas fa-heart"></i></button>
+                            <button type="submit" class="btn btn-xs btn-info"><i class="fas fa-heart"></i></button>
                         </form>
                     @endif
                 </div>
@@ -37,7 +33,7 @@
                 <div class="author-info">
                     <img src="{{ asset('img/users') }}/{{$user->avatar}}" class="author-img">  
                 </div> 
-                <h6>{{$user->first_name}}</h6><h6>{{$user->last_name}}</h6>
+                <h6>{{$user->first_name}} {{$user->last_name}}</h6>
                 <dl class="dl-horizontal" style="padding:20px 0 0 20px;">
                     <dt>Posted at:</dt>
                     <dd>{{date('j M, Y H:i',strtotime($post->created_at))}}</dd>
@@ -46,6 +42,12 @@
                     <dt>Last updated at:</dt>
                     <dd>{{date('j M, Y H:i',strtotime($post->updated_at))}}</dd>
                 </dl>
+                <hr>
+                <div class="tags" style="margin-bottom:10px;">
+                    @foreach ($post->tags as $tag)
+                        <span class="label-default text-white rounded">{{$tag->name}}</span>
+                    @endforeach
+                </div>
                 <hr>
                 @can('manage-users')
                 <div class="row">
@@ -62,9 +64,7 @@
                 </div>
                 @endcan
             </div>
-            <div class="sidebar">
-                <p>this is a sidebar</p>
-            </div>
+
         </div>
     </div>
     <div class="row" style="padding-top:20px">
