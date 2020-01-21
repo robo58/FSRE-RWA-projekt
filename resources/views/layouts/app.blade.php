@@ -172,6 +172,20 @@
         .comment-title>span{
             margin-right:15px;
         }
+        .show{
+            display: block;
+        }
+        .filterDiv {
+            float: left;
+            background-color: #2196F3;
+            color: #ffffff;
+            width: 100px;
+            line-height: 100px;
+            text-align: center;
+            margin: 2px;
+            display: none; /* Hidden by default */
+        }
+    
     </style>
 </head>
 
@@ -208,19 +222,30 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase font-weight-bold text-white rounded" href="#" role="button"
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="text-white nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{route('profiles.index')}}"><i class="fas fa-users"></i>User list</a>
+                          </li>
+                          <li class="nav-item mx-0 mx-lg-1">
+                            <a class="text-white nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{route('profiles.show',Auth::user())}}"><i class="fas fa-user"></i>My Profile</a>
+                          </li>
+                          <li class="nav-item mx-0 mx-lg-1">
+                            <a class="text-white nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i>  {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                            </form>
+                          </li>
+              
+                                @can('manage-users')
+                        <li class="nav-item dropdown mx-0 mx-lg-1">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase font-weight-bold text-white rounded py-3 px-0 px-lg-3 rounded" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} Menu<span class="caret"></span>
+                                 Menu
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('profiles.show',Auth::user())}}">
-                                    <i class="fas fa-user"></i> Profil
-                                </a>
-
-                                @can('manage-users')
-                                <div class="dropdown-divider"></div>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">                                
                                 <a href="{{route('admin.users.index')}}" class="dropdown-item">
                                     <i class="fas fa-users"></i> Upravljaj Korisnicima
                                 </a>
@@ -233,15 +258,6 @@
                                     <i class="fas fa-copy"></i> Upravljaj Objavama
                                 </a>
                                 @endcan
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                   <i class="fas fa-sign-out-alt"></i>  {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
                             </div>
                         </li>
                         @endguest

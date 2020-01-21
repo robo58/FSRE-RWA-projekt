@@ -12,7 +12,7 @@
 
         </div>
         <div class="col-sm-3">
-            <div class="well bg-white rounded">
+            <div class="well rounded" style="background-image: linear-gradient(to right, white , grey)">
                 @if (Auth::check())
                 <div class="favorite justify-content-center">
                     @if (!($post->checkFavorite($post->id)))
@@ -33,7 +33,11 @@
                 <div class="author-info">
                     <img src="{{ asset('img/users') }}/{{$user->avatar}}" class="author-img">  
                 </div> 
-                <h6>{{$user->first_name}} {{$user->last_name}}</h6>
+                <a href="{{route('profiles.show',$user)}}" class="text-secondary"><h6>{{$user->first_name}} {{$user->last_name}}</h6></a>
+                <dl class="dl-horizontal" style="padding:20px 0 0 20px;">
+                    <dt>Category:</dt>
+                    <dd><a href="{{route('categories.show',$post->category)}}" class="text-secondary">{{$post->category->name}}</a></dd>
+                </dl>
                 <dl class="dl-horizontal" style="padding:20px 0 0 20px;">
                     <dt>Posted at:</dt>
                     <dd>{{date('j M, Y H:i',strtotime($post->created_at))}}</dd>

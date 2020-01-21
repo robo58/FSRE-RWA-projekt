@@ -24,7 +24,7 @@
                     <dt>Posted at:</dt>
                     <dd>{{date('j M, Y H:i',strtotime($post->created_at))}}</dd>
                     <dt>By:</dt>
-                    <dd>{{$post->user->first_name}} {{$post->user->last_name}}</dd>
+                    <a href="{{route('profiles.show',$post->user)}}" class="text-secondary"><dd>{{$post->user->first_name}} {{$post->user->last_name}}</dd></a>
                 </dl>
                 @if (Auth::check())
                 <div class="favorite"  style="transform:translate(70%,-150%);">
